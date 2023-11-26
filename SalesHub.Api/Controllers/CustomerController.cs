@@ -2,6 +2,7 @@ using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SalesHub.Application.Customer.Create;
+using SalesHub.Application.Customer.Queries.Get;
 using SalesHub.Application.Services.Customer.Common;
 using SalesHub.Contracts.Customer;
 
@@ -17,10 +18,18 @@ public class CustomerController : ControllerBase {
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> CreateCustomer(AddCustomerRequest request) {
+    public async Task<IActionResult> CreateCustomer(CreateCustomerRequest request) {
 
         var command = new CreateCustomerCommand(request.FirstName, request.LastName, request.Phone, request.Email);
         ErrorOr<CreateCustomerResult> result = await _sender.Send(command);
+
+        return Ok(result);
+    }
+
+    [HttpGet("get")]
+    public async Task<IActionResult> GetCustomer(GetCustomerRequest request) {
+        var query = new GetCustomerQuery(request.Email);
+        ErrorOr<GetCustomerResult> result = await _sender.Send(query);
 
         return Ok(result);
     }

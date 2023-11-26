@@ -1,6 +1,6 @@
 namespace SalesHub.Contracts.Customer
 {
-    public record AddCustomerRequest(
+    public record CreateCustomerRequest(
         string FirstName,
         string LastName,
         string Phone,
