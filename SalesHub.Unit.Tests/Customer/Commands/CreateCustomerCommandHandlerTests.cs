@@ -23,7 +23,7 @@ public class CreateCustomerCommandHandlerTests
             "john@doe.com"
         );
 
-        _mockCustomerRepository.Setup(x => x.CreateAsync(It.IsAny<Domain.Entities.Customer>()))
+        _mockCustomerRepository.Setup(x => x.CreateAsync(It.IsAny<Domain.Entities.Customer>(), new CancellationToken()))
             .ReturnsAsync(new Domain.Entities.Customer
             {
                 Id = Guid.NewGuid(),
@@ -55,7 +55,7 @@ public class CreateCustomerCommandHandlerTests
             "john@doe.com"
         );
 
-        _mockCustomerRepository.Setup(x => x.GetCustomerByEmailAsync(It.IsAny<string>()))
+        _mockCustomerRepository.Setup(x => x.GetByEmailAsync(It.IsAny<string>(), new CancellationToken()))
             .ReturnsAsync(new Domain.Entities.Customer
             {
                 Id = Guid.NewGuid(),

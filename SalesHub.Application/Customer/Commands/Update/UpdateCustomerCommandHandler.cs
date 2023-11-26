@@ -25,7 +25,7 @@ public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerComman
             Email = request.Email
         };
 
-        var updatedCustomer = await _customerRepository.UpdateCustomerAsync(customer);
+        var updatedCustomer = await _customerRepository.UpdateAsync(customer);
 
         if(updatedCustomer is null)
         {

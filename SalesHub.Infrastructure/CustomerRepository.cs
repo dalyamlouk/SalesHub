@@ -5,17 +5,22 @@ namespace SalesHub.Infrastructure;
 
 public class CustomerRepository : ICustomerRepository
 {
-    public Task<Customer> CreateAsync(Customer customer)
+    public Task<Customer> CreateAsync(Customer customer, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Customer?> GetCustomerByEmailAsync(string email)
+    public Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Customer?> UpdateCustomerAsync(Customer customer)
+    public Task<Customer?> GetByEmailAsync(string email, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Customer?> UpdateAsync(Customer customer, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

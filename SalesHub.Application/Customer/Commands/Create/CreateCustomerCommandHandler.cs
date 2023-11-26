@@ -17,7 +17,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 
     public async Task<ErrorOr<CreateCustomerResult>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
-        var existingCustomer = await _customerRepository.GetCustomerByEmailAsync(request.Email);
+        var existingCustomer = await _customerRepository.GetByEmailAsync(request.Email);
 
         if (existingCustomer is not null) 
         {

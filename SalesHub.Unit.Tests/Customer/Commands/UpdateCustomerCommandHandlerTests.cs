@@ -23,7 +23,7 @@ public class UpdateCustomerCommandHandlerTests
             "john@doe.com"
         );
 
-        _mockCustomerRepository.Setup(x => x.UpdateCustomerAsync(It.IsAny<Domain.Entities.Customer>()))
+        _mockCustomerRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Customer>(), new CancellationToken()))
             .ReturnsAsync(new Domain.Entities.Customer
             {
                 Id = command.Id,
@@ -56,7 +56,7 @@ public class UpdateCustomerCommandHandlerTests
             "john@doe.com"
         );
 
-        _mockCustomerRepository.Setup(x => x.UpdateCustomerAsync(It.IsAny<Domain.Entities.Customer>()))
+        _mockCustomerRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Customer>(), new CancellationToken()))
             .ReturnsAsync((Domain.Entities.Customer)null);
 
         var handler = new UpdateCustomerCommandHandler(_mockCustomerRepository.Object);

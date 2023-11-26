@@ -24,7 +24,7 @@ public class GetCustomerQueryHandlerTests
     [Fact]
     public async Task Handle_ShouldReturnCustomer_WhenEmailMatchedInRepository()
     {
-        _mockCustomerRepository.Setup(m => m.GetCustomerByEmailAsync(It.IsAny<string>()))
+        _mockCustomerRepository.Setup(m => m.GetByEmailAsync(It.IsAny<string>(), new CancellationToken()))
             .ReturnsAsync(new Domain.Entities.Customer
             {
                 Id = Guid.NewGuid(),

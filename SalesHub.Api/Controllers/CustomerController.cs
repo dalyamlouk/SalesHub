@@ -2,6 +2,7 @@ using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SalesHub.Application.Customer.Commands.Create;
+using SalesHub.Application.Customer.Commands.Delete;
 using SalesHub.Application.Customer.Commands.Update;
 using SalesHub.Application.Customer.Common;
 using SalesHub.Application.Customer.Queries.Get;
@@ -41,6 +42,14 @@ public class CustomerController : ControllerBase {
     public async Task<IActionResult> UpdateCustomer(UpdateCustomerRequest request) {
         var command = new UpdateCustomerCommand(request.Id, request.FirstName, request.LastName, request.Phone, request.Email);
         ErrorOr<UpdateCustomerResult> result = await _sender.Send(command);
+
+        return Ok(result);
+    }
+
+    [HttpDelete("delete")]
+    public async Task<IActionResult> DeleteCustomer(DeleteCustomerRequest request) {
+        var command = new DeleteCustomerCommand(request.Id);
+        ErrorOr<DeleteCustomerResult> result = await _sender.Send(command);
 
         return Ok(result);
     }
