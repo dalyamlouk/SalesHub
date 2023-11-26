@@ -37,7 +37,7 @@ public class CustomerController : ControllerBase {
         return Ok(result);
     }
 
-    [HttpGet("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateCustomer(UpdateCustomerRequest request) {
         var command = new UpdateCustomerCommand(request.Id, request.FirstName, request.LastName, request.Phone, request.Email);
         ErrorOr<UpdateCustomerResult> result = await _sender.Send(command);
