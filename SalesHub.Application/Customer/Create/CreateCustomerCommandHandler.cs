@@ -1,14 +1,28 @@
 using ErrorOr;
 using MediatR;
+using SalesHub.Application.Common.Interfaces;
 using SalesHub.Application.Services.Customer.Common;
+using SalesHub.Domain.Common.Errors;
 
 namespace SalesHub.Application.Customer.Create;
 
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, ErrorOr<CreateCustomerResult>>
 {
+    private readonly ICustomerRepository _customerRepository;
+
+    public CreateCustomerCommandHandler(ICustomerRepository customerRepository){
+        _customerRepository = customerRepository;
+    }
 
     public async Task<ErrorOr<CreateCustomerResult>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
+        var existingCustomer = await _customerRepository.GetCustomerByEmailAsync(request.Email);
+
+        if (existingCustomer is not null) 
+        {
+            return Errors.Customer.AlreadyExists(request.Email);
+        }
+
         var customer = new Domain.Entities.Customer { 
             FirstName = request.FirstName, 
             LastName = request.LastName, 
@@ -16,13 +30,14 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
             Email = request.Email
         };
 
-        
+        var createdCustomer = await _customerRepository.CreateAsync(customer);
+  
         return new CreateCustomerResult(
-            customer.Id,
-            customer.FirstName, 
-            customer.LastName,
-            customer.Phone,
-            customer.Email
+            createdCustomer.Id,
+            createdCustomer.FirstName, 
+            createdCustomer.LastName,
+            createdCustomer.Phone,
+            createdCustomer.Email
         );
     }
 }
