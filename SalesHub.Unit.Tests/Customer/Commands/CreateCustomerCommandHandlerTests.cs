@@ -1,10 +1,7 @@
-using ErrorOr;
-using Moq;
 using SalesHub.Application.Common.Interfaces;
 using SalesHub.Application.Customer.Commands.Create;
 using SalesHub.Application.Customer.Common;
 using SalesHub.Application.Customer.Create;
-using Shouldly;
 
 namespace SalesHub.Unit.Tests.Customer.Commands;
 
@@ -55,7 +52,7 @@ public class CreateCustomerCommandHandlerTests
             "john@doe.com"
         );
 
-        _mockCustomerRepository.Setup(x => x.GetByEmailAsync(It.IsAny<string>(), new CancellationToken()))
+        _mockCustomerRepository.Setup(x => x.GetByEmailAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Domain.Entities.Customer
             {
                 Id = Guid.NewGuid(),
@@ -66,7 +63,7 @@ public class CreateCustomerCommandHandlerTests
             });
 
         var handler = new CreateCustomerCommandHandler(_mockCustomerRepository.Object);
-        var result = await handler.Handle(command, new CancellationToken());
+        var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
         result.Errors.Count().ShouldBe(1);
         result.FirstError.Code.ShouldBe("Customer.AlreadyExists");

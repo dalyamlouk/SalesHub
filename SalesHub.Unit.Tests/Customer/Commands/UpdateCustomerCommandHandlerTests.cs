@@ -1,10 +1,7 @@
-using ErrorOr;
-using Moq;
 using SalesHub.Application.Common.Interfaces;
 using SalesHub.Application.Customer.Commands.Update;
 using SalesHub.Application.Customer.Update;
 using SalesHub.Applications.Customer.Common;
-using Shouldly;
 
 namespace SalesHub.Unit.Tests.Customer.Commands;
 
@@ -23,7 +20,7 @@ public class UpdateCustomerCommandHandlerTests
             "john@doe.com"
         );
 
-        _mockCustomerRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Customer>(), new CancellationToken()))
+        _mockCustomerRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Customer>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Domain.Entities.Customer
             {
                 Id = command.Id,
@@ -34,7 +31,7 @@ public class UpdateCustomerCommandHandlerTests
             });
 
         var handler = new UpdateCustomerCommandHandler(_mockCustomerRepository.Object);
-        var result = await handler.Handle(command, new CancellationToken());
+        var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
         result.ShouldBeOfType<ErrorOr<UpdateCustomerResult>>();
         result.Value.Id.ShouldNotBe(Guid.Empty);
@@ -56,11 +53,11 @@ public class UpdateCustomerCommandHandlerTests
             "john@doe.com"
         );
 
-        _mockCustomerRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Customer>(), new CancellationToken()))
+        _mockCustomerRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Customer>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync((Domain.Entities.Customer)null);
 
         var handler = new UpdateCustomerCommandHandler(_mockCustomerRepository.Object);
-        var result = await handler.Handle(command, new CancellationToken());
+        var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
         result.Errors.Count().ShouldBe(1);
         result.FirstError.Code.ShouldBe("Customer.NotFound");

@@ -1,9 +1,6 @@
-using ErrorOr;
-using Moq;
 using SalesHub.Application.Common.Interfaces;
 using SalesHub.Application.Customer.Queries.Get;
 using SalesHub.Application.Services.Customer.Common;
-using Shouldly;
 
 namespace SalesHub.Unit.Tests.Customer.Queries;
 
@@ -15,7 +12,7 @@ public class GetCustomerQueryHandlerTests
     public async Task Handle_ShouldReturnError_WhenCustomerNotFound()
     {
         var handler = new GetCustomerQueryHandler(_mockCustomerRepository.Object);
-        var result = await handler.Handle(new GetCustomerQuery("john@doe.com"), new CancellationToken());
+        var result = await handler.Handle(new GetCustomerQuery("john@doe.com"), It.IsAny<CancellationToken>());
 
         result.ShouldBeOfType<ErrorOr<GetCustomerResult>>();
         result.FirstError.Code.ShouldBe("Customer.NotFound");
@@ -24,7 +21,7 @@ public class GetCustomerQueryHandlerTests
     [Fact]
     public async Task Handle_ShouldReturnCustomer_WhenEmailMatchedInRepository()
     {
-        _mockCustomerRepository.Setup(m => m.GetByEmailAsync(It.IsAny<string>(), new CancellationToken()))
+        _mockCustomerRepository.Setup(m => m.GetByEmailAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Domain.Entities.Customer
             {
                 Id = Guid.NewGuid(),
@@ -35,7 +32,7 @@ public class GetCustomerQueryHandlerTests
             });
         
         var handler = new GetCustomerQueryHandler(_mockCustomerRepository.Object);
-        var result = await handler.Handle(new GetCustomerQuery("john@doe.com"), new CancellationToken());
+        var result = await handler.Handle(new GetCustomerQuery("john@doe.com"), It.IsAny<CancellationToken>());
 
         result.ShouldBeOfType<ErrorOr<GetCustomerResult>>();
         result.Value.Id.ShouldNotBe(Guid.Empty);

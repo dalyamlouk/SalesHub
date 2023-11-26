@@ -18,4 +18,19 @@ public static class Errors
             Error.Conflict(code: "Customer.NotFound",
                            description: $"Customer with Id {id} could not be found.");
     }
+
+    public static class Product
+    {
+        public static Error AlreadyExists(string sku) =>
+            Error.Conflict(code: "Product.AlreadyExists",
+                           description: $"Product with SKU {sku} already exists.");
+
+        public static Error NotFound(string sku) =>
+            Error.Conflict(code: "Product.NotFound",
+                           description: $"Product with SKU {sku} could not be found.");
+
+        public static Error NotFound(Guid id) =>
+            Error.Conflict(code: "Product.NotFound",
+                           description: $"Product with Id {id} could not be found.");
+    }
 }

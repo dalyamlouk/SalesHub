@@ -1,7 +1,5 @@
-using Moq;
 using SalesHub.Application.Common.Interfaces;
 using SalesHub.Application.Customer.Commands.Delete;
-using Shouldly;
 
 namespace SalesHub.Unit.Tests.Customer.Commands;
 
@@ -18,8 +16,19 @@ public class DeleteCustomerCommandHandlerTests {
         var handler = new DeleteCustomerCommandHandler(_mockCustomerRepository.Object);
         var command = new DeleteCustomerCommand(Guid.NewGuid());
 
-        var result = await handler.Handle(command, CancellationToken.None);
+        var result = await handler.Handle(command, It.IsAny<CancellationToken>());
 
         result.Value.Success.ShouldBeTrue();
+    }
+
+    [Fact]
+    public async Task Handle_WhenCustomerDoesNotExist_ReturnsUnsuccessful() {
+
+        var handler = new DeleteCustomerCommandHandler(_mockCustomerRepository.Object);
+        var command = new DeleteCustomerCommand(Guid.NewGuid());
+
+        var result = await handler.Handle(command, It.IsAny<CancellationToken>());
+
+        result.Value.Success.ShouldBeFalse();
     }
 }
