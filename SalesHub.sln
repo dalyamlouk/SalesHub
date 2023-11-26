@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesHub.Domain", "SalesHub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesHub.Infrastructure", "SalesHub.Infrastructure\SalesHub.Infrastructure.csproj", "{0D052C98-AAA6-427E-B0FA-CFB14B21237D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesHub.Integration.Tests", "SalesHub.Integration.Tests\SalesHub.Integration.Tests.csproj", "{6D5EDE89-6358-4203-8853-955BC0592DB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesHub.Unit.Tests", "SalesHub.Unit.Tests\SalesHub.Unit.Tests.csproj", "{C6765339-2140-4FFA-B774-07F8F7D0E28F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +46,13 @@ Global
 		{0D052C98-AAA6-427E-B0FA-CFB14B21237D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D052C98-AAA6-427E-B0FA-CFB14B21237D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D052C98-AAA6-427E-B0FA-CFB14B21237D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D5EDE89-6358-4203-8853-955BC0592DB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D5EDE89-6358-4203-8853-955BC0592DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D5EDE89-6358-4203-8853-955BC0592DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D5EDE89-6358-4203-8853-955BC0592DB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6765339-2140-4FFA-B774-07F8F7D0E28F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6765339-2140-4FFA-B774-07F8F7D0E28F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6765339-2140-4FFA-B774-07F8F7D0E28F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6765339-2140-4FFA-B774-07F8F7D0E28F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
