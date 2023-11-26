@@ -1,8 +1,9 @@
 using ErrorOr;
 using Moq;
 using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Customer.Commands.Create;
+using SalesHub.Application.Customer.Common;
 using SalesHub.Application.Customer.Create;
-using SalesHub.Application.Services.Customer.Common;
 using Shouldly;
 
 namespace SalesHub.Unit.Tests.Customer.Commands;

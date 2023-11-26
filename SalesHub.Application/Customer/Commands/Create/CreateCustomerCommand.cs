@@ -1,8 +1,8 @@
 using ErrorOr;
 using MediatR;
-using SalesHub.Application.Services.Customer.Common;
+using SalesHub.Application.Customer.Common;
 
-namespace SalesHub.Application.Customer.Create;
+namespace SalesHub.Application.Customer.Commands.Create;
 
 public record CreateCustomerCommand(string FirstName,
                             string LastName,

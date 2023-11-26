@@ -1,7 +1,8 @@
 using ErrorOr;
 using MediatR;
 using SalesHub.Application.Common.Interfaces;
-using SalesHub.Application.Services.Customer.Common;
+using SalesHub.Application.Customer.Commands.Create;
+using SalesHub.Application.Customer.Common;
 using SalesHub.Domain.Common.Errors;
 
 namespace SalesHub.Application.Customer.Create;

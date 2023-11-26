@@ -14,4 +14,9 @@ public class CustomerRepository : ICustomerRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<Customer?> UpdateCustomerAsync(Customer customer)
+    {
+        throw new NotImplementedException();
+    }
 }

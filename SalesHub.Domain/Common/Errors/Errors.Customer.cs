@@ -13,5 +13,9 @@ public static class Errors
         public static Error NotFound(string email) =>
             Error.Conflict(code: "Customer.NotFound",
                            description: $"Customer with email {email} could not be found.");
+
+        public static Error NotFound(Guid id) =>
+            Error.Conflict(code: "Customer.NotFound",
+                           description: $"Customer with Id {id} could not be found.");
     }
 }

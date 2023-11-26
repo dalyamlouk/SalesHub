@@ -1,6 +1,6 @@
-namespace SalesHub.Application.Customer.Common
+namespace SalesHub.Applications.Customer.Common
 {
-    public record CreateCustomerResult(
+    public record UpdateCustomerResult(
         Guid Id,
         string FirstName,
         string LastName,
