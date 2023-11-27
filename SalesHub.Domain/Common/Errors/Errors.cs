@@ -32,5 +32,13 @@ public static class Errors
         public static Error NotFound(Guid id) =>
             Error.Conflict(code: "Product.NotFound",
                            description: $"Product with Id {id} could not be found.");
+                           
+    }
+
+    public static class Order
+    {
+        public static Error NotFound(Guid id) =>
+            Error.Conflict(code: "Order.NotFound",
+                           description: $"Order with Id {id} could not be found.");                          
     }
 }

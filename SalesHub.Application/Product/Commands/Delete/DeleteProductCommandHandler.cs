@@ -1,6 +1,6 @@
 using ErrorOr;
 using MediatR;
-using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Common.Interfaces.Product;
 using SalesHub.Applications.Product.Common;
 
 namespace SalesHub.Application.Product.Commands.Delete;

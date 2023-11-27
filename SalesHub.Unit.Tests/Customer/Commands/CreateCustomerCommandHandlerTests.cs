@@ -1,4 +1,4 @@
-using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Common.Interfaces.Customer;
 using SalesHub.Application.Customer.Commands.Create;
 using SalesHub.Application.Customer.Common;
 using SalesHub.Application.Customer.Create;

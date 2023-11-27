@@ -1,4 +1,4 @@
-using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Common.Interfaces.Customer;
 using SalesHub.Application.Customer.Queries.Get;
 using SalesHub.Application.Services.Customer.Common;
 

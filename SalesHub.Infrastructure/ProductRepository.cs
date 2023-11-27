@@ -1,4 +1,4 @@
-using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Common.Interfaces.Product;
 using SalesHub.Domain.Entities;
 
 namespace SalesHub.Infrastructure;

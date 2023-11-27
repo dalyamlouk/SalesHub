@@ -1,4 +1,4 @@
-namespace SalesHub.Application.Common.Interfaces;
+namespace SalesHub.Application.Common.Interfaces.Product;
 
 public interface IProductRepository {
     Task<Domain.Entities.Product?> GetBySkuAsync(string sku, CancellationToken cancellationToken = default);

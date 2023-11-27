@@ -1,4 +1,4 @@
-namespace SalesHub.Application.Common.Interfaces;
+namespace SalesHub.Application.Common.Interfaces.Customer;
 
 public interface ICustomerRepository {
     Task<Domain.Entities.Customer?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);

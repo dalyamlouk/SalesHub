@@ -1,11 +1,11 @@
-using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Common.Interfaces.Product;
 using SalesHub.Application.Product.Commands.Delete;
 
 namespace SalesHub.Unit.Tests.Customer.Commands;
 
 public class DeleteProductCommandHandlerTests {
 
-    private Mock<IProductRepository> _mockProductRepository = new Mock<IProductRepository>();
+    private readonly Mock<IProductRepository> _mockProductRepository = new Mock<IProductRepository>();
 
     [Fact]
     public async Task Handle_WhenProductExists_ReturnsSuccess() {

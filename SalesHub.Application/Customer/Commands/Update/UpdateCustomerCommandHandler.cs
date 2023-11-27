@@ -1,6 +1,6 @@
 using ErrorOr;
 using MediatR;
-using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Common.Interfaces.Customer;
 using SalesHub.Application.Customer.Commands.Update;
 using SalesHub.Applications.Customer.Common;
 using SalesHub.Domain.Common.Errors;

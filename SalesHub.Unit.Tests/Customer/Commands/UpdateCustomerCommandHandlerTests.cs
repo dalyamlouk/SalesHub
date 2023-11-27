@@ -1,4 +1,4 @@
-using SalesHub.Application.Common.Interfaces;
+using SalesHub.Application.Common.Interfaces.Customer;
 using SalesHub.Application.Customer.Commands.Update;
 using SalesHub.Application.Customer.Update;
 using SalesHub.Applications.Customer.Common;
