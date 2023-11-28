@@ -19,7 +19,7 @@ public class UpdateProductCommandHandlerTests
             "123456789"
         );
 
-        _mockProductRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Product>(), It.IsAny<CancellationToken>()))
+        _mockProductRepository.Setup(x => x.UpdateAsync(It.IsAny<Guid>(), It.IsAny<string>(), It.IsAny<string>(),  It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new Domain.Entities.Product
             {
                 Id = command.Id,
@@ -48,7 +48,7 @@ public class UpdateProductCommandHandlerTests
             "123456789"
         );
 
-        _mockProductRepository.Setup(x => x.UpdateAsync(It.IsAny<Domain.Entities.Product>(), It.IsAny<CancellationToken>()))
+        _mockProductRepository.Setup(x => x.UpdateAsync(It.IsAny<Guid>(), It.IsAny<string>(), It.IsAny<string>(),  It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync((Domain.Entities.Product)null);
 
         var handler = new UpdateProductCommandHandler(_mockProductRepository.Object);

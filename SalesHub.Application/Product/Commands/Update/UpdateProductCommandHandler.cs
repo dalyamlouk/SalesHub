@@ -18,14 +18,8 @@ public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand,
 
     public async Task<ErrorOr<UpdateProductResult>> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {
-        var Product = new Domain.Entities.Product { 
-            Id = request.Id,
-            Name = request.Name, 
-            Description = request.Description, 
-            SKU = request.SKU, 
-        };
-
-        var updatedProduct = await _productRepository.UpdateAsync(Product, cancellationToken);
+        var updatedProduct = await _productRepository.UpdateAsync(
+            request.Id, request.Name, request.Description, request.SKU, cancellationToken);
 
         if(updatedProduct is null)
         {

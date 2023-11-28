@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using ErrorOr;
 using MediatR;
 using SalesHub.Application.Common.Interfaces.Customer;
@@ -17,15 +18,8 @@ public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerComman
 
     public async Task<ErrorOr<UpdateCustomerResult>> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
     {
-        var customer = new Domain.Entities.Customer { 
-            Id = request.Id,
-            FirstName = request.FirstName, 
-            LastName = request.LastName, 
-            Phone = request.Phone, 
-            Email = request.Email
-        };
-
-        var updatedCustomer = await _customerRepository.UpdateAsync(customer);
+        var updatedCustomer = await _customerRepository.UpdateAsync(
+            request.Id, request.FirstName, request.LastName, request.Phone, request.Email, cancellationToken);
 
         if(updatedCustomer is null)
         {

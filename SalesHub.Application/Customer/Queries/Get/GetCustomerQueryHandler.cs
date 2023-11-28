@@ -17,7 +17,7 @@ public class GetCustomerQueryHandler : IRequestHandler<GetCustomerQuery, ErrorOr
 
     public async Task<ErrorOr<GetCustomerResult>> Handle(GetCustomerQuery request, CancellationToken cancellationToken)
     {
-        if(await _customerRepository.GetByEmailAsync(request.Email) is Domain.Entities.Customer customer) 
+        if(await _customerRepository.GetByEmailAsync(request.Email, cancellationToken) is Domain.Entities.Customer customer) 
         {
             return new GetCustomerResult(customer.Id, customer.FirstName, customer.LastName, customer.Phone, customer.Email);
         }
